@@ -11,8 +11,10 @@ def plotClusters(X, idx):
             plt.plot(X[i, 0], X[i, 1], 'ro');
         elif (idx[i] == 2):
             plt.plot(X[i, 0], X[i, 1], 'bo');
-        else:
+        elif (idx[i] == 3):
             plt.plot(X[i, 0], X[i, 1], 'go');
+        elif (idx[i] == 4):
+            plt.plot(X[i, 0], X[i, 1], 'yo');
     plt.show()
 
 def init_centroids(X, K):
@@ -47,7 +49,7 @@ X = sio.loadmat('ex7data2.mat')
 X = np.array(X['X'])
 plt.plot(X[:, 0], X[:, 1], 'ro')
 plt.show()
-K = 3
+K = 4
 centroids = init_centroids(X, K)
 ret = findClosestCentroids(X, centroids)
 tmpCentroids = computeCentroids(X, ret, K)
