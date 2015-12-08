@@ -5,6 +5,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io as sio
 
+def plotClusters(X, idx):
+    for i in range(X.shape[0]):
+        if (idx[i] == 1):
+            plt.plot(X[i, 0], X[i, 1], 'ro');
+        elif (idx[i] == 2):
+            plt.plot(X[i, 0], X[i, 1], 'bo');
+        else:
+            plt.plot(X[i, 0], X[i, 1], 'go');
+    plt.show()
+
 def init_centroids(X, K):
     idx = random.sample(range(X.shape[0]), K)
     ret = []
@@ -38,7 +48,17 @@ X = np.array(X['X'])
 plt.plot(X[:, 0], X[:, 1], 'ro')
 plt.show()
 K = 3
-centroids = np.array([[3, 3], [6, 2], [8, 5]])
+centroids = init_centroids(X, K)
 ret = findClosestCentroids(X, centroids)
-print computeCentroids(X, ret, K)
-#centroids = init_centroids(X, K)
+tmpCentroids = computeCentroids(X, ret, K)
+plotClusters(X, ret)
+while (1):
+    ret = findClosestCentroids(X, centroids)
+    tmpCentroids = computeCentroids(X, ret, K)
+    if (tmpCentroids == centroids).all():
+        break
+    else:
+        centroids = tmpCentroids
+        plotClusters(X, ret)
+print "This is the solution found.\n"
+plotClusters(X, ret)
