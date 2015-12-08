@@ -1,1 +1,5 @@
-I AM NOT FINISHED !!!
+In this project I implemented the K-means algorithm on a dataset found in the Machine Learning course provided by Andrew NG on coursera.
+
+All you have to do is 'python Python/K_Means.py'(assuming you have the libraries I used). At first you will see the data ploted in red without any cluster created. Then you will see the evolution of the clusters after each step. All you have to do is close the window and another will pop until not a single centroid has moved. You can change the value of K, which is the number of clusters, but only 4 will be shown in different colors.
+
+To do this I used numpy for the matrices calculation and matplotlib to display the data.
